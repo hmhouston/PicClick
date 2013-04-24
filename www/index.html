@@ -5,41 +5,214 @@
     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" / >
-        <title>Title</title>
+        <title>PicClick-1</title>
         
         <link href="css/reset.css" rel="stylesheet" type="text/css" />
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
         
-        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>-->
-        <!--<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>-->
-        <!--<script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script>-->
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+        -->
+        <script src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script>
     
     </head>
 
     <body>
     
         <header>
-        	 <h1>Robert Fraher's Application</h1>
         </header>
         
+        <nav>
+        	<div id="centerthisguy">
+        		<div id="logo">
+                	<img src="images/logo.png" />
+                </div>
+                <div id="menuButton">
+                	<img src="images/menuButton.png" />
+                </div>
+            </div>
+        </nav>
+        
         <section id="content">
-        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
+        	<div id="backgroundContainer">
+            	
+                
             
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            	<ul id="picContainer">
+                   	<li id="imageHolder1"><a id="control1"></a></li>
+                    <li id="imageHolder2"><a id="control2"></a></li>
+                    <li id="imageHolder3"><a id="control3"></a></li>
+                    <li id="imageHolder4"><a id="control4"></a></li>
+                </ul>
+                
+                <div id="solved"><img src="images/solved.png" /></div>
+                
+                <div class="clear"></div>
+                
+                <div id="new">
+                	<p id="newButton">new</p>
+                   	<p id="playButton">play/pause</p>
+                    <p id="timeButton">time</p>
+                </div>
+                
+                <div class="clear"></div>
             
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
             
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             
         </section>
+        
+        <script>
+			var imageHolderArray=new Array();
+			var controlArray=new Array();
+			
+			var topLeftArray=new Array();
+			var topRightArray=new Array();
+			var bottomLeftArray=new Array();
+			var bottomRightArray=new Array();
+			
+			var valueArray = new Array();
+			
+			var topLeftActive;
+			var topRightActive;
+			var bottomRightActive;
+			var bottomLeftActive;
+	
+			var activeValueArray = new Array();
+	
+			imageHolderArray[0]="imageHolder1";
+			imageHolderArray[1]="imageHolder2";
+			imageHolderArray[2]="imageHolder3";
+			imageHolderArray[3]="imageHolder4";
+	
+			controlArray[0]="control1";
+			controlArray[1]="control2";
+			controlArray[2]="control3";
+			controlArray[3]="control4";
+			
+			topLeftArray[0] = 'images/piece11.jpg';
+			topLeftArray[1] = 'images/piece21.jpg';
+			topLeftArray[2] = 'images/piece31.jpg';
+			topLeftArray[3] = 'images/piece41.jpg';
+			
+			topRightArray[0] = 'images/piece12.jpg';
+			topRightArray[1] = 'images/piece22.jpg';
+			topRightArray[2] = 'images/piece32.jpg';
+			topRightArray[3] = 'images/piece42.jpg';
+			
+			bottomLeftArray[0] = 'images/piece13.jpg';
+			bottomLeftArray[1] = 'images/piece23.jpg';
+			bottomLeftArray[2] = 'images/piece33.jpg';
+			bottomLeftArray[3] = 'images/piece43.jpg';
+			
+			bottomRightArray[0] = 'images/piece14.jpg';
+			bottomRightArray[1] = 'images/piece24.jpg';
+			bottomRightArray[2] = 'images/piece34.jpg';
+			bottomRightArray[3] = 'images/piece44.jpg';
+			
+			valueArray[0] = topLeftArray;
+			valueArray[1] = topRightArray;
+			valueArray[2] = bottomLeftArray;
+			valueArray[3] = bottomRightArray;
+			
+			activeValueArray[0] = topLeftActive;
+			activeValueArray[1] = topRightActive;
+			activeValueArray[2] = bottomRightActive;
+			activeValueArray[3] = bottomLeftActive;
+			
+			
+			
+			$(document).ready(function(){
+				//$('#solved').hide();
+				setBG();
+			});
+			
+			function setBG(){
+				
+				for (i=0;i<imageHolderArray.length;i++) {
+					
+					var randomNumber = Math.floor((Math.random()*4)+1)-1;
+					activeValueArray[i] = randomNumber;
+					
+					console.log("randomNumber: "+randomNumber);
+					console.log("imageHolderArray[i]: "+ imageHolderArray[i]);
+					console.log("activeValueArray[i]: "+ activeValueArray[i]);
+					console.log("valueArray[i][activeValueArray[i]: "+ valueArray[i][activeValueArray[i]]);
+					
+					$("#"+imageHolderArray[i]).css("background-image", 'url(' + valueArray[i][activeValueArray[i]] + ')');
+					
+					if(activeValueArray[i]<=2){
+						activeValueArray[i]++;
+					} else {
+						activeValueArray[i] = 0;
+					}
+				};
+				
+			};
+		
+			$('#picContainer a').on('tap', function(event){
+				determineWhichControl($(this).attr('id'));
+				//event.preventDefault();
+			});
+			
+			
+			function determineWhichControl(control_id){
+				
+				for (i=0;i<controlArray.length;i++) {
+					if(controlArray[i] == control_id){
+						// we found the right A tag!!!
+						changeBG(i);
+						// set the bg
+							
+					} else {
+						// Not the right A tag!!!
+					};
+			
+				};
+				
+			};
+			
+			function changeBG(selectedControlNumber){
+				
+				var newBG = valueArray[selectedControlNumber][activeValueArray[selectedControlNumber]];
+				
+				if(activeValueArray[selectedControlNumber]<=2){
+					activeValueArray[selectedControlNumber]++;
+				}else {
+					activeValueArray[selectedControlNumber] = 0;
+				}
+				
+				$("#"+imageHolderArray[selectedControlNumber]).css("background-image", 'url(' + newBG + ')');
+				
+				if(activeValueArray[0] == activeValueArray[1] && activeValueArray[0] == activeValueArray[2]  && activeValueArray[0] == activeValueArray[3]) {
+					solvedFeedback();
+				} else{
+				}
+				
+						
+			};	
+			
+			function solvedFeedback(){
+				
+				$("#solved").fadeIn("fast");
+				$('#solved').delay(200).fadeOut("fast");
+				$("#solved").fadeIn("fast");
+				$('#solved').delay(200).fadeOut("fast");
+				$("#solved").fadeIn("fast");
+				$('#solved').delay(200).fadeOut("fast");
+				
+				setTimeout(function() {
+					  setBG();
+				}, 2000);
+
+				
+			};
+			
+		
+		</script>
+        
 
     </body>
 

@@ -1,0 +1,20 @@
+<data>
+	<directories>
+		<imagePath>images/</imagePath>
+	</directories>
+	<clickImages>
+		<image>
+			<array1>piece11.jpg</array1>
+		</image>
+		<image>
+			<array1>piece12.jpg</array1>
+		</image>
+		<image>
+			<array1>piece13.jpg</array1>
+		</image>
+		<image>
+			<array1>piece14.jpg</array1>
+		</image>
+	</clickImages>
+</data>
+<?xml version="1.0" encoding="UTF-8"?>
