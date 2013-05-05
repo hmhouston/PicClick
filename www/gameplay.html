@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" / >
+        <title>PicClick</title>
+        
+        <link href="css/reset.css" rel="stylesheet" type="text/css" />
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+        -->
+        <script src="js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script>
+    
+    </head>
+
+    <body>
+    
+        <header>
+        </header>
+        
+        <nav>
+        	<div id="centerthisguy">
+        		<div id="logo">
+                	<img src="images/logo.png" />
+                </div>
+                <div id="menuButton">
+                	<a href="#dialog" name="modal"><img src="images/menuButton.png" /></a>
+              	</div>
+            </div>
+        </nav>
+        
+        <section id="content">
+        	<div id="backgroundContainer">
+            	<div id="picContainer">
+                	<div id="solvedContainer">
+                		<div id="solved"><img src="images/solved.png" /></div>
+                  	</div>
+                    
+                    <ul id="imageHolderList">
+                        <li id="imageHolder1">
+                        	<a id="control1"></a>
+                        </li>
+                        <li id="imageHolder2"><a id="control2"></a></li>
+                        <li id="imageHolder3"><a id="control3"></a></li>
+                        <li id="imageHolder4"><a id="control4"></a></li>
+                    </ul>
+                    
+                        <form name="timer">
+                        	<ul id="gameStatus">
+                            	<li>
+                                    <button id="newButton" onclick="resetButton()">
+                                        <img src="images/reset.png" class="gameButtonIcons" height="25" width="25" />
+                                            <span class="gameButtonNames"><br />reset</span>
+                                    </button>
+                               	</li>
+                                <li id="solvedCounter">
+                                    <input type="text" size="1" id="solvedReadout" />
+                                    <p>solved in</p>
+                                    <input id="timerReadout" type="text" size="2" name="timerReadout">
+                               	</li>
+                                <li>
+                                    <button id="playPauseButton" type="button" onclick="startstoptimer()">
+                                        <img src="images/playPause.png" class="gameButtonIcons" />
+                                            <span class="gameButtonNames"><br />play/pause</span>
+                                    </button>
+                              	</li>
+                           	</ul>
+                        </form>
+                    
+                    
+                    <div class="clear"></div>
+                            
+                </div>
+            </div>
+        </section>
+        
+        
+        	<div id="boxes">
+				<div id="dialog" class="window">
+                	<ul>
+                    	<li><a href="index.html"><button id="backButton"><img src="images/back.png" class="buttonIcons" /><span class="buttonNames">home</span></button></a></li>
+                        <li><a href="help.html"><button id="helpButton"><img src="images/help.png" class="buttonIcons" /><span class="buttonNames">help</span></button></a></li>
+                    	<li><a href="#"class="close"/><button id="closeButton"><img src="images/close.png" class="buttonIcons" /><span class="buttonNames">close</span></button></a></li>
+                  	</ul>
+                </div>
+         	</div>
+            
+          	<div id="mask"></div>
+			</div>
+        
+        
+        <!----ARRAY SCRIPT------------------------------------------------------------------------------------------------
+        ------------------------------------------------------------------------------------------------------------------>
+        <script>
+			var imageHolderArray=new Array();
+			var controlArray=new Array();
+			
+			var topLeftArray=new Array();
+			var topRightArray=new Array();
+			var bottomLeftArray=new Array();
+			var bottomRightArray=new Array();
+			
+			var valueArray = new Array();
+			
+			var topLeftActive;
+			var topRightActive;
+			var bottomRightActive;
+			var bottomLeftActive;
+	
+			var activeValueArray = new Array();
+			
+			var solvedPlus = 0;
+			
+			var clickableImages = true;
+	
+			imageHolderArray[0]="imageHolder1";
+			imageHolderArray[1]="imageHolder2";
+			imageHolderArray[2]="imageHolder3";
+			imageHolderArray[3]="imageHolder4";
+	
+			controlArray[0]="control1";
+			controlArray[1]="control2";
+			controlArray[2]="control3";
+			controlArray[3]="control4";
+			
+			topLeftArray[0] = 'images/piece11.jpg';
+			topLeftArray[1] = 'images/piece21.jpg';
+			topLeftArray[2] = 'images/piece31.jpg';
+			topLeftArray[3] = 'images/piece41.jpg';
+			
+			topRightArray[0] = 'images/piece12.jpg';
+			topRightArray[1] = 'images/piece22.jpg';
+			topRightArray[2] = 'images/piece32.jpg';
+			topRightArray[3] = 'images/piece42.jpg';
+			
+			bottomLeftArray[0] = 'images/piece13.jpg';
+			bottomLeftArray[1] = 'images/piece23.jpg';
+			bottomLeftArray[2] = 'images/piece33.jpg';
+			bottomLeftArray[3] = 'images/piece43.jpg';
+			
+			bottomRightArray[0] = 'images/piece14.jpg';
+			bottomRightArray[1] = 'images/piece24.jpg';
+			bottomRightArray[2] = 'images/piece34.jpg';
+			bottomRightArray[3] = 'images/piece44.jpg';
+			
+			valueArray[0] = topLeftArray;
+			valueArray[1] = topRightArray;
+			valueArray[2] = bottomLeftArray;
+			valueArray[3] = bottomRightArray;
+			
+			activeValueArray[0] = topLeftActive;
+			activeValueArray[1] = topRightActive;
+			activeValueArray[2] = bottomRightActive;
+			activeValueArray[3] = bottomLeftActive;
+			
+			
+			
+			$(document).ready(function(){
+				document.getElementById('solvedReadout').value= 0;
+				$('#solved').hide();
+				setBG();
+				starttimer();
+				console.log("clickableImages"+ clickableImages);
+			});
+			
+			function resetButton(){
+				setBG();
+				resettimer();
+				startstoptimer();
+				document.getElementById('solvedReadout').value= 0;
+			}
+			
+			function setBG(){
+				
+				
+				for (i=0;i<imageHolderArray.length;i++) {
+					
+					var randomNumber = Math.floor((Math.random()*4)+1)-1;
+					activeValueArray[i] = randomNumber;
+					
+					/*console.log("randomNumber: "+randomNumber);
+					console.log("imageHolderArray[i]: "+ imageHolderArray[i]);
+					console.log("activeValueArray[i]: "+ activeValueArray[i]);
+					console.log("valueArray[i][activeValueArray[i]: "+ valueArray[i][activeValueArray[i]]);
+					*/
+					
+					$("#"+imageHolderArray[i]).css("background-image", 'url(' + valueArray[i][activeValueArray[i]] + ')');
+					
+					if(activeValueArray[i]<=2){
+						activeValueArray[i]++;
+					} else {
+						activeValueArray[i] = 0;
+					}
+				};
+				
+			};
+		
+			$('#picContainer a').on('tap', function(event){
+				
+					determineWhichControl($(this).attr('id'));
+					//event.preventDefault();
+					
+				
+			});
+			
+			function solvedCount(){
+				document.getElementById('solvedReadout').value= ++solvedPlus;
+			};
+			
+			
+			function determineWhichControl(control_id){
+				for (i=0;i<controlArray.length;i++) {
+					if(controlArray[i] == control_id){
+						// we found the right A tag!!!
+						changeBG(i);
+						// set the bg
+							
+					} else {
+						// Not the right A tag!!!
+					};
+			
+				};
+			};
+			
+			function changeBG(selectedControlNumber){
+				
+				var newBG = valueArray[selectedControlNumber][activeValueArray[selectedControlNumber]];
+				
+				if(clickableImages == true){
+					if(activeValueArray[selectedControlNumber]<=2){
+						activeValueArray[selectedControlNumber]++;
+					}else {
+						activeValueArray[selectedControlNumber] = 0;
+					}
+					
+					$("#"+imageHolderArray[selectedControlNumber]).css("background-image", 'url(' + newBG + ')');
+					
+					if(activeValueArray[0] == activeValueArray[1] && activeValueArray[0] == activeValueArray[2]  && activeValueArray[0] == activeValueArray[3]) {
+						solvedFeedback();
+					} else{
+					};
+					
+					
+				} else {
+				};
+				
+				console.log("clickableImages"+ clickableImages);
+						
+			};	
+			
+			function solvedFeedback(){
+				
+				clickableImages = false;
+				document.getElementById('solvedReadout').value= ++solvedPlus;
+				
+				
+				$("#solved").fadeIn("fast");
+				$('#solved').delay(200).fadeOut("fast");
+				$("#solved").fadeIn("fast");
+				$('#solved').delay(200).fadeOut("fast");
+				$("#solved").fadeIn("fast");
+				$('#solved').delay(200).fadeOut("fast");
+				
+				setTimeout(function() {
+					  setBG();
+					  clickableImages = true;
+					  console.log("clickableImages"+ clickableImages);
+				}, 2000);
+
+				
+			};
+			
+			
+			<!----TIMER SCRIPT-------------------------------------------------------------------------------------------------->
+        	<!------------------------------------------------------------------------------------------------------------------>
+			var millisec = 0;
+			var seconds = 0;
+			var minutes = 0;
+			var timer;
+			
+			function display(){
+			
+			  if (millisec>=9){
+				 millisec=0
+				 seconds+=1
+				 if(seconds>=60){
+					 seconds = 0;
+					 minutes ++;
+				 } else{
+				 }
+			  }
+			  else
+				 millisec+=1
+				 if (seconds < 10){
+					 document.timer.timerReadout.value = minutes + ":0" + seconds ;
+				 } else{
+					 document.timer.timerReadout.value = minutes + ":" + seconds ;
+				 }
+				 
+				 timer = setTimeout("display()",100);
+			  }
+			
+			function starttimer() {
+				
+			  if (timer > 0) {
+				return;
+			  }
+			  display();	
+			}
+			function stoptimer() {
+			  clearTimeout(timer);
+			  timer = 0;
+			}
+			
+			function startstoptimer() {
+			  if (timer > 0) {
+				 clearTimeout(timer);
+				 timer = 0;
+				 clickableImages = false;
+			  } else {
+				 display();
+				 clickableImages = true;
+			  }
+			}
+			
+			function resettimer() {
+				stoptimer();
+				millisec = 0;
+				seconds = 0;
+				minutes = 0;
+			}
+			
+		
+		</script>
+        
+        <!----MENU SCRIPT------------------------------------------------------------------------------------------------
+        ------------------------------------------------------------------------------------------------------------------>
+        
+        <script>
+		$(document).ready(function() {	
+
+				//select all the a tag with name equal to modal
+				$('a[name=modal]').click(function(e) {
+					//Cancel the link behavior
+					e.preventDefault();
+					
+					//Get the A tag
+					var id = $(this).attr('href');
+				
+					//Get the screen height and width
+					var maskHeight = $(document).height();
+					var maskWidth = $(window).width();
+				
+					//Set heigth and width to mask to fill up the whole screen
+					$('#mask').css({'width':maskWidth,'height':maskHeight});
+					
+					//transition effect		
+					$('#mask').fadeIn(200);	
+					$('#mask').fadeTo("slow",1);	
+				
+					//Get the window height and width
+					var winH = $(window).height();
+					var winW = $(window).width();
+						  
+					//Set the popup window to center
+					
+					$(id).css('left', winW/2-$(id).width()/2);
+				
+					//transition effect
+					$(id).fadeIn(500); 
+				
+				});
+				
+				//if close button is clicked
+				$('.window .close').click(function (e) {
+					//Cancel the link behavior
+					e.preventDefault();
+					
+					$('#mask').hide();
+					$('.window').hide();
+				});		
+				
+				//if mask is clicked
+				$('#mask').click(function () {
+					$(this).hide();
+					$('.window').hide();
+				});			
+			
+				$(window).resize(function () {
+				 
+					var box = $('#boxes .window');
+			 
+					//Get the screen height and width
+					var maskHeight = $(document).height();
+					var maskWidth = $(window).width();
+				  
+					//Set height and width to mask to fill up the whole screen
+					$('#mask').css({'width':maskWidth,'height':maskHeight});
+						   
+					//Get the window height and width
+					var winH = $(window).height();
+					var winW = $(window).width();
+			
+					//Set the popup window to center
+					
+					box.css('left', winW/2 - box.width()/2);
+				 
+				});
+				
+			});
+		</script>
+        
+        
+        
+
+    </body>
+
+</html>

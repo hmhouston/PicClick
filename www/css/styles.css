@@ -1,8 +1,20 @@
+
+
+/* MOBILE STYLES: PORTRAIT */
+@media only screen and (max-width: 479px){
+	
 body{
-		background-image:url(../images/bgimage2.jpg);
-		background-repeat:repeat;
-		font-family: 'ptsans';
-		color:#fefefe;
+	background-image:url(../images/bgimage2.jpg);
+	background-repeat:repeat;
+	font-family: 'ptsans';
+	font-size: 13pt;
+	line-height:1.5em;
+	color:#fefefe;
+	overflow:hidden;
+}
+
+a{
+	color:#202020;
 }
 
 /* Font Families
@@ -24,10 +36,41 @@ nav{
 	box-shadow: 0px 2px 10px 0px #000;
 }
 
+#mask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:rgba(0,0,0,0.7);
+  display:none;
+}
+  
+#boxes .window {
+	position:fixed;
+	width:80%;
+	height:80%;
+	margin-top:20%;
+	display:none;
+	z-index:9999;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#boxes #dialog {
+ 	width:80%;
+	padding-top:20px;
+	padding-bottom:20px;
+	height:183px;
+	background-color:rgba(20,20,20,0.9);
+ 	/*background-color:rgba(5,5,5,0.0);*/
+}
+
 #centerthisguy{
 	line-height:50px;
-	width:300px;
-	margin:auto;
+	width:93.75%;
+	margin-left:3.125%;
+	margin-right:3.125%;
 }
 
 #logo{
@@ -56,35 +99,151 @@ nav{
 ----------------------------------------------------------------------------------------------------*/
 
 #content{
-	width: 320px;
-	height: 100%;
+	width:100%;	
 	margin:auto;
 }	
 
 #backgroundContainer{
 	width:93.75%;
-	margin:auto;
+	height: 93.75%;
+	margin-left:3.125%;
+	margin-right:3.125%;
+	margin-bottom:3.125%;
+	overflow:hidden;
 	background-color:rgba(5,5,5,0.5);
 	box-shadow: 0px .5px 5px 0px #000;
+	position:absolute;
+	
+}
+
+#indexContainer{
+	width:90.67%;
+	height:100%;
+	top:0%;
+	margin-left:5%;
+}
+
+#descriptionIcon{
+	width:600px;
+	max-width:100%;
+	margin:auto 0;
+	display:block;
+	margin-top:15px;
+}
+
+#descriptionIcon img{
+	max-width: 100%;
+	height: auto;
 }
 
 #picContainer{
-	margin:auto;
-	/*width:93.33%;*/
-	width:272px;
+	width:92.35%;
+	top:0%;
+	margin-left:4%;
+	height:100%;
+}
+
+
+
+
+/* Index Page
+----------------------------------------------------------------------------------------------------*/
+
+/***FIRST STYLE THE BUTTON***/
+#startbutton{
+width:100%;
+background: #ffffff; /*the colour of the button*/
+padding: 8px 14px 10px; /*apply some padding inside the button*/
+margin: 10px 0px 20px 0px;
+border:1px solid #565656; /*required or the default border for the browser will appear*/
+cursor:pointer; /*forces the cursor to change to a hand when the button is hovered*/
+
+/*give the background a gradient - see cssdemos.tupence.co.uk/gradients.htm for more info*/
+background-color:#ffffff; /*required for browsers that don't support gradients*/
+background: -webkit-gradient(linear, left top, left bottom, from(#343434), to(#191919));
+background: -webkit-linear-gradient(top, #343434, #191919);
+background: -moz-linear-gradient(top, #343434, #191919);
+background: -o-linear-gradient(top, #343434, #191919);
+background: linear-gradient(top, #343434, #191919);
+
+/*style the text*/
+font-size:16pt;
+font-weight:bold;
+text-shadow: 0 1px 1px rgba(0, 0, 0, .5); /*give the text a shadow - doesn't appear in Opera 12.02 or earlier*/
+color: #fefefe;
+text-align:center;
+/*give the corners a small curve*/
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+.buttonIcons{
+	float:left;
+	margin-left:15%;
+}
+
+.buttonNames{
+	float:left;
+	margin-left:15%;
+}
+
+#backButton, #helpButton, #exitButton, #aboutButton, #closeButton{
+width:90%;
+background: #ffffff; /*the colour of the button*/
+padding: 8px 14px 10px; /*apply some padding inside the button*/
+margin: 5% 5% 0% 5%;
+border:1px solid #565656; /*required or the default border for the browser will appear*/
+cursor:pointer; /*forces the cursor to change to a hand when the button is hovered*/
+
+/*give the background a gradient - see cssdemos.tupence.co.uk/gradients.htm for more info*/
+background-color:#ffffff; /*required for browsers that don't support gradients*/
+background: -webkit-gradient(linear, left top, left bottom, from(#343434), to(#191919));
+background: -webkit-linear-gradient(top, #343434, #191919);
+background: -moz-linear-gradient(top, #343434, #191919);
+background: -o-linear-gradient(top, #343434, #191919);
+background: linear-gradient(top, #343434, #191919);
+
+/*style the text*/
+font-size:14pt;
+text-shadow: 0 1px 1px rgba(0, 0, 0, .5); /*give the text a shadow - doesn't appear in Opera 12.02 or earlier*/
+color: #fefefe;
+text-align:center;
+/*give the corners a small curve*/
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+
+/* GamePlay Page
+----------------------------------------------------------------------------------------------------*/
+#imageHolderList{
+	width:100%;
+	height:60%;
 }
 
 #picContainer li{
 	width:50%;
-	height:136px;
-	display:block;	
+	height:50%;
+	/*padding-top:50%;*/
+	background:no-repeat;
+	background-size:100%;
 	float:left;
-	background-color: #fff;
+}
+
+li#imageHolder1, li#imageHolder2{
+	background-position:bottom;
+}
+
+li#imageHolder3, li#imageHolder4{
+	background-position:top;
 }
 
 #picContainer a{
 	width:100%;
-	height:100%;
+	/*height:100%;*/
+	padding-top:100%;
 	display:block;
 	/*border: 1px solid #fff;*/
 }
@@ -93,36 +252,97 @@ nav{
 	margin-top:15px;
 }
 
-#solved{
+#solvedContainer{
+	width:93.33%;
+	margin-top:50%;
 	position:absolute;
-	display:block;
-	width:272px;
-	height:272px;
-	margin:auto;
+	top:0%;
+}
+#solved{
+	margin-left:30%;
+	position:relative;
 }
 
-#new{
-	margin-top:20px;
+#gameStatus{
+	margin-top:10%;
 	width:100%;
-	float:left;
 }
 
-#new p {
-	float:left;
+#gameStatus li{
+	width:33.33%;
 }
+
+#newButton, #playPauseButton{
+	width:80%;
+	margin-top:10%;
+	float:left;
+	background: #ffffff; /*the colour of the button*/
+	padding: 5px 5px 8px; /*apply some padding inside the button*/
+	border:1px solid #3a3939; /*required or the default border for the browser will appear*/
+	cursor:pointer; /*forces the cursor to change to a hand when the button is hovered*/
+	
+	/*give the background a gradient - see cssdemos.tupence.co.uk/gradients.htm for more info*/
+	background-color:#ffffff; /*required for browsers that don't support gradients*/
+	background: -webkit-gradient(linear, left top, left bottom, from(#343434), to(#191919));
+	background: -webkit-linear-gradient(top, #343434, #191919);
+	background: -moz-linear-gradient(top, #343434, #191919);
+	background: -o-linear-gradient(top, #343434, #191919);
+	background: linear-gradient(top, #343434, #191919);
+	
+	/*style the text*/
+	font-size:8pt;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .5); /*give the text a shadow - doesn't appear in Opera 12.02 or earlier*/
+	color: #565656;
+	text-align:center;
+	/*give the corners a small curve*/
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
 
 #newButton{
-	width:33.33%;
-	margin:auto;
 }
 
-#playButton{
-	width:33.33%;
+#solvedCounter{
+	float:left;
+	text-align:center;
+	width:100%;
 }
 
-#timeButton{
-	width:33.33%;
+#solvedReadout{
+	outline: none;
+	border: none;
+	background-color: transparent; 
+	font-family: 'ptsans';
+	font-size: 30pt;
+	color:#fefefe;
+	width:100%;
+	text-align:center;
 }
+
+#solvedCounter p{
+	font-size: 10pt;
+	line-height:1.5em;
+	color: #fefefe;
+}
+
+#timerReadout{
+	outline: none;
+	border: none;
+	background-color: transparent; 
+	font-family: 'ptsans';
+	font-size: 13pt;
+	line-height:3em;
+	color:#fefefe;
+}
+
+#playPauseButton{
+	float:right;
+}
+
+
+
 
 /* Clear the styling
 ----------------------------------------------------------------------------------------------------*/
@@ -130,28 +350,37 @@ nav{
 	clear:both;
 }
 
-/* MOBILE STYLES: PORTRAIT */
-@media only screen and (max-width: 479px){
-
 }
 
 /* MOBILE STYLES: LANDSCAPE */
 @media only screen and (min-width: 480px) and (max-width: 767px){
+	body{
+		display:none;
+	}
 	
 }
 
 /* TABLET STYLES: PORTRAIT */
 @media only screen and (min-width: 768px) and (max-width: 959px){
+	body{
+		display:none;
+	}
 	
 }
 
 /* TABLET STYLES: LANDSCAPE */
 @media only screen and (min-width: 960px) and (max-width: 1024px){
+	body{
+		display:none;
+	}
 	
 }
 
 /* DESKTOP STYLES */
 @media only screen and (min-width: 1025px){
+	body{
+		display:none;
+	}
 	
 	
 	
