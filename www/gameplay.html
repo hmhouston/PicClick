@@ -59,19 +59,19 @@
                                     </button>
                                	</li>
                                 <li id="solvedCounter">
-                                    <input type="text" size="1" id="solvedReadout" />
-                                    <p>solved in</p>
-                                    <input id="timerReadout" type="text" size="2" name="timerReadout">
+                                	<p>solved:</p>
+                                    <input type="text" size="3" id="solvedReadout" />
+                                    <p>time:</p>
+                                    <input id="timerReadout" type="text" size="5" name="timerReadout">
                                	</li>
                                 <li>
-                                    <button id="playPauseButton" type="button" onclick="startstoptimer()">
-                                        <img src="images/playPause.png" class="gameButtonIcons" />
-                                            <span class="gameButtonNames"><br />play/pause</span>
+                                   	<button id="playPauseButton" type="button"  value="pause" onclick="startstoptimer()">
+                                           <img src="images/pauseIcon.png" class="gameButtonIcons" id="imgClickAndChange">
+                                            <a id="gameButtonNames">pause</a>
                                     </button>
                               	</li>
                            	</ul>
                         </form>
-                    
                     
                     <div class="clear"></div>
                             
@@ -83,9 +83,9 @@
         	<div id="boxes">
 				<div id="dialog" class="window">
                 	<ul>
+                    	<li><a href="#"class="close"/><button id="closeButton"><img src="images/close.png" class="buttonIcons" /></button></a></li>
                     	<li><a href="index.html"><button id="backButton"><img src="images/back.png" class="buttonIcons" /><span class="buttonNames">home</span></button></a></li>
                         <li><a href="help.html"><button id="helpButton"><img src="images/help.png" class="buttonIcons" /><span class="buttonNames">help</span></button></a></li>
-                    	<li><a href="#"class="close"/><button id="closeButton"><img src="images/close.png" class="buttonIcons" /><span class="buttonNames">close</span></button></a></li>
                   	</ul>
                 </div>
          	</div>
@@ -97,6 +97,7 @@
         <!----ARRAY SCRIPT------------------------------------------------------------------------------------------------
         ------------------------------------------------------------------------------------------------------------------>
         <script>
+		
 			var imageHolderArray=new Array();
 			var controlArray=new Array();
 			
@@ -201,7 +202,6 @@
 			};
 		
 			$('#picContainer a').on('tap', function(event){
-				
 					determineWhichControl($(this).attr('id'));
 					//event.preventDefault();
 					
@@ -322,9 +322,13 @@
 				 clearTimeout(timer);
 				 timer = 0;
 				 clickableImages = false;
+				 document.getElementById("imgClickAndChange").src = "images/playIcon.png";
+				 document.getElementById("gameButtonNames").innerHTML ='play';
 			  } else {
 				 display();
 				 clickableImages = true;
+				 document.getElementById("imgClickAndChange").src = "images/pauseIcon.png";
+				 document.getElementById("gameButtonNames").innerHTML ='pause';
 			  }
 			}
 			
@@ -335,13 +339,11 @@
 				minutes = 0;
 			}
 			
-		
-		</script>
+			
+			
+        <!----MENU SCRIPT------------------------------------------------------------------------------------------------>
+       	<!-------------------------------------------------------------------------------------------------------------------->
         
-        <!----MENU SCRIPT------------------------------------------------------------------------------------------------
-        ------------------------------------------------------------------------------------------------------------------>
-        
-        <script>
 		$(document).ready(function() {	
 
 				//select all the a tag with name equal to modal
@@ -373,6 +375,8 @@
 				
 					//transition effect
 					$(id).fadeIn(500); 
+					
+					startstoptimer();
 				
 				});
 				
@@ -383,12 +387,16 @@
 					
 					$('#mask').hide();
 					$('.window').hide();
+					
+					startstoptimer();
 				});		
 				
 				//if mask is clicked
 				$('#mask').click(function () {
 					$(this).hide();
 					$('.window').hide();
+					
+					startstoptimer();
 				});			
 			
 				$(window).resize(function () {
