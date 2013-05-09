@@ -10,9 +10,6 @@
         <link href="css/reset.css" rel="stylesheet" type="text/css" />
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
         
-        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
-        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-        -->
         <script src="js/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script>
     
@@ -39,7 +36,10 @@
             	<div id="picContainer">
                 	<div id="solvedContainer">
                 		<div id="solved"><img src="images/solved.png" /></div>
+                        <div id="paused"><img src="images/paused.png" /></div>
                   	</div>
+                    
+                   
                     
                     <ul id="imageHolderList">
                         <li id="imageHolder1">
@@ -84,8 +84,8 @@
 				<div id="dialog" class="window">
                 	<ul>
                     	<li><a href="#"class="close"/><button id="closeButton"><img src="images/close.png" class="buttonIcons" /></button></a></li>
-                    	<li><a href="index.html"><button id="backButton"><img src="images/back.png" class="buttonIcons" /><span class="buttonNames">home</span></button></a></li>
-                        <li><a href="help.html"><button id="helpButton"><img src="images/help.png" class="buttonIcons" /><span class="buttonNames">help</span></button></a></li>
+                    	<li><a href="help.html"><button id="helpButton"><img src="images/help.png" class="buttonIcons" /><span class="buttonNames">help</span></button></a></li>
+                        <li><a href="index.html"><button id="backButton"><img src="images/back.png" class="buttonIcons" /><span class="buttonNames">home</span></button></a></li>
                   	</ul>
                 </div>
          	</div>
@@ -160,10 +160,21 @@
 			activeValueArray[3] = bottomLeftActive;
 			
 			
+			$.fn.centerMe = function () {
+				this.css('left', $(window).width()/2 - $(this).width()/3);
+				this.css('top', $(window).height()/2 - $(this).height()/.4);
+			};
+			$(window).resize(function() { $('#solved').centerMe(); });
+			$('#solved').centerMe();
+			$(window).resize(function() { $('#paused').centerMe(); });
+			$('#paused').centerMe();
+			
+			
 			
 			$(document).ready(function(){
 				document.getElementById('solvedReadout').value= 0;
 				$('#solved').hide();
+				$('#paused').hide();
 				setBG();
 				starttimer();
 				console.log("clickableImages"+ clickableImages);
@@ -184,11 +195,6 @@
 					var randomNumber = Math.floor((Math.random()*4)+1)-1;
 					activeValueArray[i] = randomNumber;
 					
-					/*console.log("randomNumber: "+randomNumber);
-					console.log("imageHolderArray[i]: "+ imageHolderArray[i]);
-					console.log("activeValueArray[i]: "+ activeValueArray[i]);
-					console.log("valueArray[i][activeValueArray[i]: "+ valueArray[i][activeValueArray[i]]);
-					*/
 					
 					$("#"+imageHolderArray[i]).css("background-image", 'url(' + valueArray[i][activeValueArray[i]] + ')');
 					
@@ -324,11 +330,13 @@
 				 clickableImages = false;
 				 document.getElementById("imgClickAndChange").src = "images/playIcon.png";
 				 document.getElementById("gameButtonNames").innerHTML ='play';
+				 $("#paused").fadeIn("fast");
 			  } else {
 				 display();
 				 clickableImages = true;
 				 document.getElementById("imgClickAndChange").src = "images/pauseIcon.png";
 				 document.getElementById("gameButtonNames").innerHTML ='pause';
+				 $('#paused').fadeOut("fast");
 			  }
 			}
 			

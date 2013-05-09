@@ -7,14 +7,14 @@ body{
 	background-image:url(../images/bgimage2.jpg);
 	background-repeat:repeat;
 	font-family: 'ptsans';
-	font-size: 13pt;
+	font-size: 12pt;
 	line-height:1.5em;
 	color:#fefefe;
 	overflow:hidden;
 }
 
 a{
-	color:#202020;
+	color:#fefefe;
 }
 
 /* Font Families
@@ -28,7 +28,7 @@ a{
 }
 
 
-/* Header
+/* Navigation and Menu
 ----------------------------------------------------------------------------------------------------*/
 nav{
 	height:50px;
@@ -59,9 +59,9 @@ nav{
 
 #boxes #dialog {
  	width:80%;
-	padding-top:20px;
+	padding-top:-50px;
 	padding-bottom:20px;
-	height:183px;
+	height:160px;
 	background-color:rgba(20,20,20,0.9);
  	/*background-color:rgba(5,5,5,0.0);*/
 }
@@ -116,31 +116,12 @@ nav{
 	
 }
 
-#indexContainer{
+#indentContainer{
 	width:90.67%;
 	height:100%;
 	top:0%;
 	margin-left:5%;
-}
-
-#descriptionIcon{
-	width:600px;
-	max-width:100%;
-	margin:auto 0;
-	display:block;
 	margin-top:15px;
-}
-
-#descriptionIcon img{
-	max-width: 100%;
-	height: auto;
-}
-
-#picContainer{
-	width:92.35%;
-	top:0%;
-	margin-left:4%;
-	height:100%;
 }
 
 
@@ -149,7 +130,18 @@ nav{
 /* Index Page
 ----------------------------------------------------------------------------------------------------*/
 
-/***FIRST STYLE THE BUTTON***/
+#descriptionIcon{
+	width:600px;
+	max-width:100%;
+	margin:auto 0;
+	display:block;
+}
+
+#descriptionIcon img{
+	max-width: 100%;
+	height: auto;
+}
+
 #startbutton{
 width:100%;
 background: #ffffff; /*the colour of the button*/
@@ -217,6 +209,8 @@ border-radius: 5px;
 
 #closeButton{
 	float: right;
+	margin-top:-7px;
+	margin-right:-10px;
 	background:none;
 	border:none;
 }
@@ -224,9 +218,12 @@ border-radius: 5px;
 
 /* GamePlay Page
 ----------------------------------------------------------------------------------------------------*/
-#imageHolderList{
-	width:100%;
-	height:60%;
+
+#picContainer{
+	width:92.35%;
+	top:0%;
+	margin-left:4%;
+	height:100%;
 }
 
 #picContainer li{
@@ -238,20 +235,24 @@ border-radius: 5px;
 	float:left;
 }
 
+#imageHolderList{
+	width:100%;
+	height:60%;
+}
+
 li#imageHolder1, li#imageHolder2{
 	background-position:bottom;
 }
 
 li#imageHolder3, li#imageHolder4{
+
 	background-position:top;
 }
 
 #picContainer a{
 	width:100%;
 	height:100%;
-	/*padding-top:100%;*/
 	display:block;
-	/*border: 1px solid #fff;*/
 }
 
 #imageHolder1, #imageHolder2{
@@ -259,13 +260,17 @@ li#imageHolder3, li#imageHolder4{
 }
 
 #solvedContainer{
-	width:93.33%;
-	margin-top:50%;
+	width:92.35%;
 	position:absolute;
 	top:0%;
 }
 #solved{
-	margin-left:30%;
+	
+	position:relative;
+}
+#paused{
+	height:100%;
+	width:100%;
 	position:relative;
 }
 
@@ -317,12 +322,10 @@ li#imageHolder3, li#imageHolder4{
 	width:100%; 
 }
 
-
-
 #solvedCounter p{
 	font-size: 10pt;
 	color: #fefefe;
-	height:20px;
+	height:18px;
 }
 
 #solvedReadout{
@@ -330,10 +333,10 @@ li#imageHolder3, li#imageHolder4{
 	border: none;
 	background-color: transparent; 
 	font-family: 'ptsans';
-	font-size: 30pt;
+	font-size: 24pt;
 	color:#fefefe;
 	width:100%;
-	height:37px;
+	height:32px;
 	text-align:center;
 }
 
@@ -355,6 +358,15 @@ li#imageHolder3, li#imageHolder4{
 #gameButtonNames{
 	color:#fefefe;
 }
+
+/* About Page
+----------------------------------------------------------------------------------------------------*/
+#copyright{
+	margin-top:80%;
+	text-align:center;
+	font-size:11pt;
+}
+
 
 
 
